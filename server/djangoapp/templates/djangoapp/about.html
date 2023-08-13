@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>About Us</h1>
+            <p>Welcome to XYZ Car Dealership! We are your trusted source for quality cars.</p>
+            <p>With years of experience, we offer a wide range of vehicles to suit your needs and preferences.</p>
+            <p>Our team is dedicated to providing excellent customer service and helping you find the perfect car.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/about_us_image.jpg' %}" alt="About Us" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}
