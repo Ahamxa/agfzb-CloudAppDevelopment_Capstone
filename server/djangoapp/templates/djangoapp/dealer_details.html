@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container mt-4">
+    <h5 class="card-title">Reviews for {{ dealer.full_name }}</h5>
     {% if reviews %}
     <div class="card-columns"> 
         {% for review in reviews %}
@@ -25,7 +26,7 @@
     <p class="card-text">this dealer has no reviews yet</p>
     {% endif %}
     {% if user.is_authenticated %}
-    <a class="btn btn-primary" href="#"><b>Write a car review</b></a>
+    <a class="btn btn-primary" href="{% url 'djangoapp:add_review' dealer.id %}""><b>Write a car review</b></a>
     {% endif %}
 </div>
 {% endblock %}
