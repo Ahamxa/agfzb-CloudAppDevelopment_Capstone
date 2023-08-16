@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dealership Review</title>
-    {% load static %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    {% if reviews %}
+    <div class="card-columns"> 
+        {% for review in reviews %}
+            <div class="card">
+                {% if review.sentiment == "positive" %}
+                    <img height="20px" width= "20px" class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png" alt="Positive Emoji">
+                {% elif review.sentiment == "negative" %}
+                    <img height="20px" width= "20px"  class="card-img-left" src="{{MEDIA_URL}}/emoji/negative.png" alt="Negative Emoji">
+                {% elif review.sentiment == "neutral" %}
+                    <img height="20px" width= "20px" class="card-img-left" src="{{MEDIA_URL}}/emoji/neutral.png" alt="Neutral Emoji">
+                {% endif %}
+                <div class="card-body"> 
+                    <h5 class="card-title">{{ review.name }}, {{ review.car_model }}</h5>
+                    <h5 class="card-title">{{ review.car_year }}</h5>
+                    <p class="card-text">{{ review.review }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="card-text">this dealer has no reviews yet</p>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="#"><b>Write a car review</b></a>
+    {% endif %}
+</div>
+{% endblock %}
 
-    <body>
 
-    <!--Add a nav bar here -->
 
-    <!-- Add reviews as cards -->
 
-    </body>
 
-</html>
